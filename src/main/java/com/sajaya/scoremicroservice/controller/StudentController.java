@@ -3,6 +3,7 @@ package com.sajaya.scoremicroservice.controller;
 import com.sajaya.scoremicroservice.dto.StudentDTO;
 import com.sajaya.scoremicroservice.entity.Student;
 import com.sajaya.scoremicroservice.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping
-    public ResponseEntity<StudentDTO> createStudent (@RequestBody StudentDTO studentDTO) {
+    public ResponseEntity<StudentDTO> createStudent (@Valid @RequestBody StudentDTO studentDTO) {
         StudentDTO savedStudent = studentService.createStudent(studentDTO);
         return new ResponseEntity<>(savedStudent, HttpStatus.CREATED);
     }

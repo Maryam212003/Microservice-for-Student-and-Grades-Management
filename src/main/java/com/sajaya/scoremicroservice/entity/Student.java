@@ -1,6 +1,8 @@
 package com.sajaya.scoremicroservice.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,16 +20,24 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentID;
 
-    @Column(name = "first_name", nullable = false)
+    @NotNull
+    @Size(min = 2, message = "First Name should have at least 2 character")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @NotNull
+    @Size(min = 2, message = "First Name should have at least 2 character")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "father_name", nullable = false)
+    @NotNull
+    @Size(min = 2, message = "First Name should have at least 2 character")
+    @Column(name = "father_name")
     private String fatherName;
 
-    @Column(name = "id_number", nullable = false, unique = true)
+    @NotNull
+    @Size (min = 8, max = 10, message = "The ID number size should be 8-10 number")
+    @Column(name = "id_number", unique = true)
     private String idNumber;
 
     //date of birth
