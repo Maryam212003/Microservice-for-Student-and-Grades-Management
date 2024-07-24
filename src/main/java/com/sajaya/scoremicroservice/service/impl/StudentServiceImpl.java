@@ -9,6 +9,9 @@ import com.sajaya.scoremicroservice.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class StudentServiceImpl implements StudentService {
@@ -29,4 +32,36 @@ public class StudentServiceImpl implements StudentService {
                         new ResourceNotFoundException("There is not student with given id " + studentId));
         return StudentMapper.mapToStudentDTO(student);
     }
+
+    @Override
+    public List<StudentDTO> getAllStudents() {
+        List<Student> students = studentRepository.findAll();
+        return students.stream().map((student -> StudentMapper.mapToStudentDTO(student))).collect(Collectors.toList());
+    }
+
+    @Override
+    public StudentDTO updateStudent(Long studentId, StudentDTO updatedStudentDTO) {
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("There is not student with given id " + studentId));
+
+        Student updatedStudent = StudentMapper.mapToStudent(updatedStudentDTO);
+
+        student.update(updatedStudent);
+
+        Student updatedStudentObj =  studentRepository.save(student);
+
+        return StudentMapper.mapToStudentDTO(updatedStudentObj);
+    }
+
+    @Override
+    public void deleteStudent(Long studentId) {
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("There is not student with given id " + studentId));
+
+        studentRepository.deleteById(studentId);
+    }
+
+
 }

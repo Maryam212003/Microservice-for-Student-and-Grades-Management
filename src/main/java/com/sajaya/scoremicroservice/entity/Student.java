@@ -29,4 +29,13 @@ public class Student {
 
     @Column(name = "id_number", nullable = false, unique = true)
     private String idNumber;
+
+    //date of birth
+
+    public void update(Student updatedStudent) {
+        this.firstName = updatedStudent.getFirstName();
+        this.lastName = updatedStudent.getLastName();
+        this.fatherName = updatedStudent.getFatherName();
+        this.idNumber = updatedStudent.getIdNumber();
+    }
 }
