@@ -34,4 +34,9 @@ public class Lesson {
     @Column(name = "teacher_name")
     private String teacherName;
 
+    public void update(Lesson updatedLesson) {
+        this.groupID = updatedLesson.getGroupID();
+        this.lessonName = updatedLesson.getLessonName();
+        this.teacherName = updatedLesson.getTeacherName();
+    }
 }

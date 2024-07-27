@@ -34,14 +34,12 @@ public class StudentController {
     }
 
     @GetMapping
-    //@ApiOperation(value = "View a list of available students")
     public ResponseEntity<List<StudentDTO>> getAllStudents() {
         List<StudentDTO> studentDTOS = studentService.getAllStudents();
         return ResponseEntity.ok(studentDTOS);
     }
 
     @PutMapping("{id}")
-    //@ApiOperation(value = "Update a student")
     public ResponseEntity<StudentDTO> updateStudent (@PathVariable("id") Long studentId,
                                                      @RequestBody StudentDTO updatedStudent) {
         StudentDTO studentDTO = studentService.updateStudent(studentId, updatedStudent);
@@ -49,7 +47,6 @@ public class StudentController {
     }
 
     @DeleteMapping("{id}")
-    //@ApiOperation(value = "Delete a student")
     public ResponseEntity<String> deleteStudent(@PathVariable("id") Long studentId) {
         studentService.deleteStudent(studentId);
         return ResponseEntity.ok("Successfully deleted!");

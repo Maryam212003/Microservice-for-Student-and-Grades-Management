@@ -56,10 +56,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudent(Long studentId) {
-        Student student = studentRepository.findById(studentId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("There is not student with given id " + studentId));
-
         studentRepository.deleteById(studentId);
     }
 

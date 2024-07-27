@@ -7,9 +7,11 @@ import com.sajaya.scoremicroservice.mapper.LessonMapper;
 import com.sajaya.scoremicroservice.repository.LessonRepository;
 import com.sajaya.scoremicroservice.service.LessonService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -33,16 +35,22 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public List<LessonDTO> getAllStudents() {
-        return null;
+        List<Lesson> lessons = lessonRepository.findAll();
+        return lessons.stream().map((lesson -> LessonMapper.mapToLessonDTO(lesson))).collect(Collectors.toList());
     }
 
     @Override
     public LessonDTO updateLesson(Long lessonId, LessonDTO updatedLessonDTO) {
-        return null;
+        Lesson lesson = lessonRepository.findById(lessonId).
+                orElseThrow(() -> new ResourceNotFoundException("There is not lesson with given id " + lessonId));
+        Lesson updatedLesson = LessonMapper.mapToLesson(updatedLessonDTO);
+        lesson.update(updatedLesson);
+        Lesson updatedLessonObj = lessonRepository.save(lesson);
+        return LessonMapper.mapToLessonDTO(updatedLessonObj);
     }
 
     @Override
-    public void deleteStudent(Long studentId) {
-
+    public void deleteLesson(Long lessonId) {
+        lessonRepository.deleteById(lessonId);
     }
 }
