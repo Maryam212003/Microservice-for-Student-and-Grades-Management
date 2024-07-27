@@ -21,6 +21,7 @@ public class Lesson {
     private Long lessonID;
 
     @NotNull
+
     @Column(name = "lesson_group")
     @Enumerated(EnumType.STRING)
     private LessonGroup groupID;
