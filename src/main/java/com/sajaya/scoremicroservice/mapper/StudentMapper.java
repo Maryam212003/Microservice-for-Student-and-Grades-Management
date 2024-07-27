@@ -16,7 +16,7 @@ public class StudentMapper {
 
     public static StudentDTO mapToStudentDTO(Student student) {
         return new StudentDTO(
-                student.getStudentID(),
+                student.getStudentId(),
                 student.getFirstName(),
                 student.getLastName(),
                 student.getFatherName(),

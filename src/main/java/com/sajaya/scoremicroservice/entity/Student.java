@@ -18,7 +18,8 @@ import lombok.Setter;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long studentID;
+    @Column(name = "student_id")
+    private Long studentId;
 
     @NotNull
     @Size(min = 2, message = "First Name should have at least 2 character")

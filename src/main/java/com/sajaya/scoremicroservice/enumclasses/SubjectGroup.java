@@ -1,6 +1,6 @@
 package com.sajaya.scoremicroservice.enumclasses;
 
-public enum LessonGroup {
+public enum SubjectGroup {
     MATH,
     SCIENCE,
     HISTORY,
