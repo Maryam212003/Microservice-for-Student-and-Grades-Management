@@ -17,20 +17,17 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/students")
-//@Api(value = "Student Management System", description = "Operations pertaining to students in Student Management System")
 public class StudentController {
 
     private StudentService studentService;
 
     @PostMapping
-    //@ApiOperation(value = "Add a student")
     public ResponseEntity<StudentDTO> createStudent (@Valid @RequestBody StudentDTO studentDTO) {
         StudentDTO savedStudent = studentService.createStudent(studentDTO);
         return new ResponseEntity<>(savedStudent, HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")
-    //@ApiOperation(value = "Get a student by Id")
     public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") Long studentId) {
         StudentDTO foundStudent = studentService.getStudentById(studentId);
         return ResponseEntity.ok(foundStudent);
