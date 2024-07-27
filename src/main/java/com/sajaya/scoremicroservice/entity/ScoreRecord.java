@@ -3,9 +3,18 @@ package com.sajaya.scoremicroservice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "scores")
+
 public class ScoreRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +30,6 @@ public class ScoreRecord {
 
     @Column(name = "score")
     @Size(min = 0, max = 20, message = "The score should be between 0 and 20")
-    private double score;
+    private Double score;
 
 }
