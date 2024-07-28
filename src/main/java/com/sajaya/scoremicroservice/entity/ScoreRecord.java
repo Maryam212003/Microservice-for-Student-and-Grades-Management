@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @Setter
@@ -21,7 +18,7 @@ public class ScoreRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "record_id")
-    private long recordId;
+    private Long recordId;
 
     @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
@@ -35,6 +32,12 @@ public class ScoreRecord {
     @Min(value = 0, message = "The score should be between 0 and 20")
     @Max(value = 20, message = "The score should be between 0 and 20")
     private Double score;
+
+    public ScoreRecord(Subject subject, Student student, Double score) {
+        this.subject = subject;
+        this.student = student;
+        this.score = score;
+    }
 
     public void update(ScoreRecord updatedRecord) {
         this.subject = updatedRecord.getSubject();

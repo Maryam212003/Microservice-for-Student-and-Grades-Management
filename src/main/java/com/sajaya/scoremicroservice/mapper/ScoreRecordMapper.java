@@ -10,7 +10,6 @@ public class ScoreRecordMapper {
 
     public static ScoreRecord mapToScoreRecord(ScoreRecordDTO scoreRecordDTO,  Subject subject, Student student) {
         return new ScoreRecord(
-                scoreRecordDTO.getRecordId(),
                 subject,
                 student,
                 scoreRecordDTO.getScore()
@@ -19,7 +18,6 @@ public class ScoreRecordMapper {
 
     public static ScoreRecordDTO mapToScoreRecordDTO(ScoreRecord scoreRecord) {
         return new ScoreRecordDTO(
-                scoreRecord.getRecordId(),
                 scoreRecord.getSubject().getSubjectId(),
                 scoreRecord.getStudent().getStudentId(),
                 scoreRecord.getScore()

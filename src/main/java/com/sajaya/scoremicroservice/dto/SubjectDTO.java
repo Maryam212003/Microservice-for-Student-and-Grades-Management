@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubjectDTO {
-    private Long subjectID;
     private SubjectGroup groupID;
     private String subjectName;
     private String teacherName;

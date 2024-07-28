@@ -34,6 +34,12 @@ public class Subject {
     @Column(name = "teacher_name")
     private String teacherName;
 
+    public Subject(SubjectGroup groupID, String subjectName, String teacherName) {
+        this.groupID = groupID;
+        this.subjectName = subjectName;
+        this.teacherName = teacherName;
+    }
+
     public void update(Subject updatedSubject) {
         this.groupID = updatedSubject.getGroupID();
         this.subjectName = updatedSubject.getSubjectName();

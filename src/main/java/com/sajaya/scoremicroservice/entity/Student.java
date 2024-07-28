@@ -41,6 +41,13 @@ public class Student {
     @Column(name = "id_number", unique = true)
     private String idNumber;
 
+    public Student(String firstName, String lastName, String fatherName, String idNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.idNumber = idNumber;
+    }
+
     //date of birth
 
     public void update(Student updatedStudent) {

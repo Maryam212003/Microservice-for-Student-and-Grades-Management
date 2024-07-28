@@ -6,7 +6,6 @@ import com.sajaya.scoremicroservice.entity.Subject;
 public class SubjectMapper {
     public static Subject mapToSubject(SubjectDTO subjectDTO) {
         return new Subject(
-                subjectDTO.getSubjectID(),
                 subjectDTO.getGroupID(),
                 subjectDTO.getSubjectName(),
                 subjectDTO.getTeacherName()
@@ -15,7 +14,6 @@ public class SubjectMapper {
 
     public static SubjectDTO mapToSubjectDTO(Subject subject) {
         return new SubjectDTO(
-                subject.getSubjectId(),
                 subject.getGroupID(),
                 subject.getSubjectName(),
                 subject.getTeacherName()

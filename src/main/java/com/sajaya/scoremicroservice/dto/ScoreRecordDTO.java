@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ScoreRecordDTO {
-    private Long recordId;
     private Long subjectId;
     private Long studentId;
     private Double score;
