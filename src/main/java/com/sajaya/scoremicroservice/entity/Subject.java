@@ -22,7 +22,6 @@ public class Subject {
     private Long subjectId;
 
     @NotNull
-
     @Column(name = "subject_group")
     @Enumerated(EnumType.STRING)
     private SubjectGroup groupID;

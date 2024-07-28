@@ -25,7 +25,7 @@ public class ScoreRecordController {
     private ScoreRecordService recordService;
 
     @PostMapping
-    public ResponseEntity<ScoreRecordDTO> addRecord(@RequestBody ScoreRecordDTO scoreRecordDTO) {
+    public ResponseEntity<ScoreRecordDTO> addRecord(@Valid @RequestBody ScoreRecordDTO scoreRecordDTO) {
         ScoreRecordDTO savedRecord = recordService.addRecord(scoreRecordDTO);
         return new ResponseEntity<>(savedRecord, HttpStatus.CREATED);
     }
