@@ -89,4 +89,13 @@ public class ScoreRecordServiceImp implements ScoreRecordService {
     public void deleteSubjectRecords(Long subjectId) {
 
     }
+
+    public Double calcStudentAverage(Long studentId) {
+        List<ScoreRecord> records = recordRepository.findByStudentId(studentId);
+        if (records.isEmpty()) {
+            return 0.0;
+        }
+        Double sum = records.stream().mapToDouble(ScoreRecord::getScore).sum();
+        return sum/records.size();
+    }
 }

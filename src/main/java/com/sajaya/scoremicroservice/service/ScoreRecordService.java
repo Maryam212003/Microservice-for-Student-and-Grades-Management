@@ -14,4 +14,5 @@ public interface ScoreRecordService {
     void deleteRecord(Long recordId);
     void deleteStudentRecords(Long studentId);
     void deleteSubjectRecords(Long subjectId);
+    public Double calcStudentAverage(Long studentId);
 }

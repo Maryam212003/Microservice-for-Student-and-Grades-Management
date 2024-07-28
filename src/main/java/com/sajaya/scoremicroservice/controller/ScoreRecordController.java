@@ -60,5 +60,8 @@ public class ScoreRecordController {
         recordService.deleteRecord(recordId);
         return ResponseEntity.ok("Successfully deleted!");
     }
-
+    @GetMapping("/student/{id}/average")
+    public Double getStudentAverage(@PathVariable("id") Long studentId) {
+        return recordService.calcStudentAverage(studentId);
+    }
 }

@@ -15,4 +15,5 @@ public interface ScoreRecordRepository extends JpaRepository<ScoreRecord, Long> 
     @Query(value = "SELECT new com.sajaya.scoremicroservice.entity.ScoreRecord(r.recordId, r.subject, r.student, r.score)" +
             "FROM ScoreRecord r WHERE r.subject.subjectId = :subjectId")
     List<ScoreRecord> findBySubjectId(@Param("subjectId") Long subjectId);
+
 }
