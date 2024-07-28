@@ -36,7 +36,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentDTO> getAllStudents() {
         List<Student> students = studentRepository.findAll();
-        return students.stream().map((student -> StudentMapper.mapToStudentDTO(student))).collect(Collectors.toList());
+        return students.stream().map((StudentMapper::mapToStudentDTO)).collect(Collectors.toList());
     }
 
     @Override

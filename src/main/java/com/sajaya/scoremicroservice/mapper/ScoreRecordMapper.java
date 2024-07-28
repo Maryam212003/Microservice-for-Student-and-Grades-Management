@@ -8,7 +8,7 @@ import com.sajaya.scoremicroservice.entity.Subject;
 
 public class ScoreRecordMapper {
 
-    public static ScoreRecord mapToScoreRecord(ScoreRecordDTO scoreRecordDTO, Student student, Subject subject) {
+    public static ScoreRecord mapToScoreRecord(ScoreRecordDTO scoreRecordDTO,  Subject subject, Student student) {
         return new ScoreRecord(
                 scoreRecordDTO.getRecordId(),
                 subject,
@@ -25,5 +25,6 @@ public class ScoreRecordMapper {
                 scoreRecord.getScore()
         );
     }
+
 }
 
